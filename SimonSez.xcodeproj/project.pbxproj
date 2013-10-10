@@ -21,6 +21,7 @@
 		8E22746C18072A7200245927 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E22744E18072A7100245927 /* UIKit.framework */; };
 		8E22747418072A7200245927 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8E22747218072A7200245927 /* InfoPlist.strings */; };
 		8E22747618072A7200245927 /* SimonSezTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E22747518072A7200245927 /* SimonSezTests.m */; };
+		8E22748118072AFF00245927 /* ColorPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E22748018072AFF00245927 /* ColorPanelView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		8E22747118072A7200245927 /* SimonSezTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SimonSezTests-Info.plist"; sourceTree = "<group>"; };
 		8E22747318072A7200245927 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8E22747518072A7200245927 /* SimonSezTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimonSezTests.m; sourceTree = "<group>"; };
+		8E22747F18072AFF00245927 /* ColorPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPanelView.h; sourceTree = "<group>"; };
+		8E22748018072AFF00245927 /* ColorPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPanelView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,8 @@
 				8E22745918072A7100245927 /* AppDelegate.h */,
 				8E22745A18072A7100245927 /* AppDelegate.m */,
 				8E22745C18072A7100245927 /* Main.storyboard */,
+				8E22747F18072AFF00245927 /* ColorPanelView.h */,
+				8E22748018072AFF00245927 /* ColorPanelView.m */,
 				8E22745F18072A7100245927 /* ViewController.h */,
 				8E22746018072A7100245927 /* ViewController.m */,
 				8E22746218072A7100245927 /* Images.xcassets */,
@@ -250,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E22746118072A7100245927 /* ViewController.m in Sources */,
+				8E22748118072AFF00245927 /* ColorPanelView.m in Sources */,
 				8E22745B18072A7100245927 /* AppDelegate.m in Sources */,
 				8E22745718072A7100245927 /* main.m in Sources */,
 			);
