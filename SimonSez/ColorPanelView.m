@@ -24,8 +24,8 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    NSLog(@"call the police, i've been touched");
-    [delegate didTouchColorPanelView];
+    //NSLog(@"call the police, i've been touched");
+    [delegate didTouchColorPanelView:self.tag];
 }
 
 

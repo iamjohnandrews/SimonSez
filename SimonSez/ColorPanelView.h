@@ -10,7 +10,7 @@
 
 @protocol ColorPanelDelegate
 
-- (void) didTouchColorPanelView;
+- (void) didTouchColorPanelView: (int)tagnumber;
 
 @end
 

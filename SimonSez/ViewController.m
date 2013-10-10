@@ -45,7 +45,7 @@
 
 -(void) tick
 {
-    //NSLog(@"Tick has fired");
+    //NSLog(@"Tick method has fired");
     ColorPanelView* view = [tagsAndBackgroundColors objectForKey:[NSString stringWithFormat:@"%i", i]];
     
     UIColor* previousColor = [view backgroundColor];
@@ -63,17 +63,17 @@
     if (i == 6) {
         i = 0;
         [highlightTimer invalidate];
-        NSLog(@"timer is done");
+        //NSLog(@"timer is done");
     } else {
         i++;
     }
     
 }
 
--(void)didTouchColorPanelView
+- (void) didTouchColorPanelView: (int)tagnumber
 {
     
-    NSLog(@"ViewController implemented the protocol");
+    NSLog(@"ViewController implemented the protocol and event tag # is %d", tagnumber);
 }
 
 @end
