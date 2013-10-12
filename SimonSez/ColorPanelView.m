@@ -11,7 +11,7 @@
 
 @implementation ColorPanelView
 
-@synthesize delegate;
+@synthesize delegate, delegateAlert;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -26,8 +26,32 @@
 {
     //NSLog(@"call the police, i've been touched");
     [delegate didTouchColorPanelView:self.tag];
+    
 }
 
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    //below code lights up views after player lifts his/her finger
+    UIColor* previousColor = [self backgroundColor];
+    [UIView animateWithDuration:0.2f animations:^{
+        self.backgroundColor = [UIColor whiteColor];
+    }
+                     completion:^(BOOL finished) {
+                         [UIView animateWithDuration:0.2f animations:^{
+                             self.backgroundColor = previousColor;
+                         }];
+                     }];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        [delegate didTouchColorPanelView:self.tag];
+    } else {
+        [super self];
+    }
+    
+}
 
 
 @end

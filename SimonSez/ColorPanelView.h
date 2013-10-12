@@ -8,14 +8,28 @@
 
 #import <UIKit/UIKit.h>
 
+/*pretty much a four step check list when making a protocol
+ 1. Write the protocol in the .h file (or create a class and write in .h file
+ 2. make a property in the .h file of the view
+ 3. import .h file into the view controller and add the <nameDelegate> to the same .h file
+ 4. synthesize the delegate in the view .m file
+*/
 @protocol ColorPanelDelegate
 
 - (void) didTouchColorPanelView: (int)tagnumber;
 
 @end
 
+@protocol ColorPanelAlertDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
+
+@end
+
 @interface ColorPanelView : UIView
 
 @property (weak, nonatomic)id <ColorPanelDelegate> delegate;
+
+@property (weak, nonatomic)id <ColorPanelAlertDelegate> delegateAlert;
 
 @end

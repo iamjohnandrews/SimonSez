@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ColorPanelView.h"
 
-@interface ViewController : UIViewController <ColorPanelDelegate>
+@interface ViewController : UIViewController <ColorPanelDelegate, UIAlertViewDelegate>
 
 
 
