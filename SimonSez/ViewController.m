@@ -11,10 +11,12 @@
 
 @interface ViewController ()
 {
-    NSArray* cPUTagNumbers;
+    NSMutableArray* cPUTagNumbers;
     NSMutableArray* Player1TagNumbers;
+    
     NSTimer* highlightTimer;
     NSMutableDictionary* tagsAndBackgroundColors;
+    NSMutableDictionary* tagsAndBackgroundColorsv2;
     int i;
 }
 
@@ -27,9 +29,8 @@
 {
     [super viewDidLoad];
     
-    cPUTagNumbers = @[@"1", @"2", @"3", @"4", @"5", @"6"];//the original pattern order
     Player1TagNumbers = [[NSMutableArray alloc] init];
-    
+    cPUTagNumbers = [[NSMutableArray alloc] init];
     tagsAndBackgroundColors = [[NSMutableDictionary alloc] init];
     
     for (UIView* myView in self.view.subviews) {
@@ -58,7 +59,29 @@
         //NSLog(@"timer is done");
     } else {
         i++;
+        [cPUTagNumbers addObject:[NSString stringWithFormat:@"%i", i]];
     }
+    //NSLog(@"the CPU simonSez pattern = %@", cPUTagNumbers);
+}
+
+-(void) tock
+{
+    NSLog(@"Tock method has fired");
+    
+    [self lightUp];
+    
+    for (int cycles = 0; cycles < 6; cycles++) {
+        i = arc4random()%6;
+    }
+    [highlightTimer invalidate];
+    
+//    if (i == 6) {
+//        i = 0;
+//        [highlightTimer invalidate];
+//        //NSLog(@"timer is done");
+//    } else {
+//        i++;
+//    }
     
 }
 
@@ -101,8 +124,8 @@
     
     int index = Player1TagNumbers.count - 1;
     
-    NSLog(@"CPU's array object = %@", [cPUTagNumbers objectAtIndex:index]);
-    NSLog(@"Player's array object = %@", [Player1TagNumbers objectAtIndex:index]);
+    //NSLog(@"CPU's array object = %@", [cPUTagNumbers objectAtIndex:index]);
+    //NSLog(@"Player's array object = %@", [Player1TagNumbers objectAtIndex:index]);
     
     int playerTag = [[Player1TagNumbers objectAtIndex:index] intValue];
     int cPUTag    = [[cPUTagNumbers objectAtIndex:index] intValue];
@@ -114,13 +137,13 @@
     else
     {
         //NSLog(@"Objects are NOT equal");
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"YOU LOSER" message:@"Simon Owns You!" delegate:nil cancelButtonTitle:@"Finish" otherButtonTitles:@"One More Game", nil];
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"YOU LOSER" message:@"Simon Owns You!" delegate:self cancelButtonTitle:@"Run It Back" otherButtonTitles:@"One More Game", nil];
         [alert show];
     }
     if (i == 5) {
         i = 0;
         NSLog(@"winner");
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"WINNER" message:@"You Beat Simon!" delegate:nil cancelButtonTitle:@"Finish" otherButtonTitles:@"One More Game", nil];
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"WINNER" message:@"You Beat Simon!" delegate:self cancelButtonTitle:@"Run It Back" otherButtonTitles:nil, nil];
         [alert show];
     } else {
         i++;
@@ -129,14 +152,24 @@
     
 }
     
-//    if ([Player1TagNumbers objectAtIndex:index] == [[cPUTagNumbers objectAtIndex:index] intValue] ) {
-//        NSLog(@"Objects are equal");
-//        return;
-//    } else{
-//        NSLog(@"Objects are NOT equal");
-//        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"YOU LOSER" message:@"Simon Owns You!" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"One More Game", nil];
-//        [alert show];
-//    }
-//}
+-(void) restartGame
+{
+    NSLog(@"The game is being reset");
+    
+    tagsAndBackgroundColorsv2 = [[NSMutableDictionary alloc] init];
+    
+    for (UIView* myView in self.view.subviews) {
+        if ([myView isKindOfClass:[ColorPanelView class]])
+        {
+            ((ColorPanelView*)myView).delegate = self;
+            [tagsAndBackgroundColors setObject:myView
+                                        forKey:[NSString stringWithFormat:@"%i", myView.tag]];
+        }
+        //NSLog(@"The tags of the view are %i", view.tag);
+    }
+    //NSLog(@"inside the dictionary %@", tagsAndBackgroundColors);
+    
+    highlightTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(tock) userInfo:nil repeats:YES];
+}
 
 @end

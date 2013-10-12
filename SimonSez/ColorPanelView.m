@@ -45,11 +45,12 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 0) {
-        [delegate didTouchColorPanelView:self.tag];
-    } else {
-        [super self];
-    }
+    NSLog(@"Get yo hand outta my pocket");
+//    if (buttonIndex == 0) {
+//        [delegateAlert ];
+//    } else {
+//        [delegateAlert ];
+//    }
     
 }
 
