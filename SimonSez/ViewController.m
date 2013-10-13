@@ -56,33 +56,29 @@
     if (i == 6) {
         i = 0;
         [highlightTimer invalidate];
-        //NSLog(@"timer is done");
+        NSLog(@"timer is done");
     } else {
         i++;
         [cPUTagNumbers addObject:[NSString stringWithFormat:@"%i", i]];
     }
-    //NSLog(@"the CPU simonSez pattern = %@", cPUTagNumbers);
+    NSLog(@"the CPU simonSez pattern = %@", cPUTagNumbers);
 }
 
--(void) tock
+-(void) tock //problem is program goes through loop to quickly ad the highlighter is marked invalid before anycolor changes
 {
-    NSLog(@"Tock method has fired");
+    //NSLog(@"Tock method has fired");
     
     [self lightUp];
     
     for (int cycles = 0; cycles < 6; cycles++) {
-        i = arc4random()%6;
+        i = arc4random()%5 + 1;
+        [cPUTagNumbers addObject:[NSString stringWithFormat:@"%i", i]];
     }
+    
     [highlightTimer invalidate];
+    NSLog(@"timer is done");
     
-//    if (i == 6) {
-//        i = 0;
-//        [highlightTimer invalidate];
-//        //NSLog(@"timer is done");
-//    } else {
-//        i++;
-//    }
-    
+    NSLog(@"the CPU version2 simonSez pattern = %@", cPUTagNumbers);
 }
 
 -(void) lightUp //I want to make this a function to pass in a view so that when I call funcion with the parameter "self" in ColorPanelView and parameter "view" in this View Controller, it replaces the varaible "view" below.
@@ -137,7 +133,7 @@
     else
     {
         //NSLog(@"Objects are NOT equal");
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"YOU LOSER" message:@"Simon Owns You!" delegate:self cancelButtonTitle:@"Run It Back" otherButtonTitles:@"One More Game", nil];
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"YOU LOSER" message:@"Simon Owns You!" delegate:self cancelButtonTitle:@"Run It Back" otherButtonTitles:@"I Give Up", nil];
         [alert show];
     }
     if (i == 5) {
@@ -149,6 +145,18 @@
         i++;
     }
 
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{    
+    if (buttonIndex == 0) {
+        //NSLog(@"Run It Back Button tapped");
+        [self restartGame];
+        
+    } else if (buttonIndex == 1){
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.youtube.com/watch?v=M5QGkOGZubQ"]];
+    }
     
 }
     

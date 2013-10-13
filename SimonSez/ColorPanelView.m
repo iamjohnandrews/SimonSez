@@ -43,16 +43,7 @@
                      }];
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    NSLog(@"Get yo hand outta my pocket");
-//    if (buttonIndex == 0) {
-//        [delegateAlert ];
-//    } else {
-//        [delegateAlert ];
-//    }
-    
-}
+
 
 
 @end
